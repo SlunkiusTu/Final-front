@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+  margin: auto;
+}
+
+.wrapper h1 {
+  text-align: center;
+}
