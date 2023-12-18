@@ -5,6 +5,7 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import AnswerCards from "@/components/AnswerCards/AnswerCards";
 import styles from "./styles.module.css";
+import AnswerQuestionInput from "@/components/AnswerQuestionInput/AnswerQuestionInput";
 
 type QuestionType = {
   _id: string;
@@ -57,6 +58,7 @@ const Question = () => {
         </div>
       )}
       <AnswerCards answers={answers} />
+      <AnswerQuestionInput />
       <Footer />
     </div>
   );
