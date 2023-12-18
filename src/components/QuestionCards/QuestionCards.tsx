@@ -2,6 +2,7 @@ import React from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
 
 type QuestionType = {
+  // kazkodel meta klaida reikia priminimas paziurek veliau
   questions: Array<any> | null;
 };
 

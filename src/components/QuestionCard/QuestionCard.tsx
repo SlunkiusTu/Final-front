@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./questionCard.module.css";
 import Link from "next/link";
+import styles from "./questionCard.module.css";
 
 type QuestionType = {
   _id: string;
