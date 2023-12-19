@@ -11,10 +11,15 @@ type AnswerType = {
 
 type AnswerComponentType = {
   answer: AnswerType;
+  onDelete: (answerId: string) => void;
 };
 
-const AnswerCard: React.FC<AnswerComponentType> = ({ answer }) => {
+const AnswerCard: React.FC<AnswerComponentType> = ({ answer, onDelete }) => {
   const justDate = new Date(answer.date).toISOString().split("T")[0];
+
+  const handleDelete = () => {
+    onDelete(answer._id);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -22,6 +27,7 @@ const AnswerCard: React.FC<AnswerComponentType> = ({ answer }) => {
       <p>{answer.answer_text}</p>
       <div>{justDate}</div>
       <div>{answer.gained_likes_number}</div>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };

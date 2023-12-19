@@ -7,6 +7,7 @@ type QuestionType = {
   question_title: string;
   question_text: string;
   date: string;
+  onDelete?: (question_id: string) => Promise<void>;
 };
 
 type QuestionComponentType = {
@@ -15,6 +16,7 @@ type QuestionComponentType = {
 
 const QuestionCard: React.FC<QuestionComponentType> = ({ question }) => {
   const justDate = new Date(question.date).toISOString().split("T")[0];
+
   return (
     <Link className={styles.link} href={`/question/${question._id}`}>
       <div className={styles.wrapper}>

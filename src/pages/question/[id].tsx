@@ -48,6 +48,30 @@ const Question = () => {
     router.query.id && fetchQuestion(router.query.id as string);
   }, [router.query.id]);
 
+  const handleDeleteAnswer = async (answerId: string) => {
+    try {
+      await axios.delete(`http://localhost:3001/answer/${answerId}`);
+
+      setAnswers((prevAnswers) =>
+        prevAnswers
+          ? prevAnswers.filter((answer) => answer._id !== answerId)
+          : null
+      );
+    } catch (error) {
+      console.log("error ", error);
+    }
+  };
+
+  const handleDeleteQuestion = async (question_id: string) => {
+    try {
+      await axios.delete(`http://localhost:3001/question/${question_id}`);
+
+      router.push("/");
+    } catch (error) {
+      console.log("error ", error);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -55,9 +79,12 @@ const Question = () => {
         <div className={styles.wrapper}>
           <h1>{question.question_title}</h1>
           <p>{question.question_text}</p>
+          <button onClick={() => handleDeleteQuestion(question?._id)}>
+            deleteQuestion
+          </button>
         </div>
       )}
-      <AnswerCards answers={answers} />
+      <AnswerCards answers={answers} onDelete={handleDeleteAnswer} />
       <AnswerQuestionInput />
       <Footer />
     </div>

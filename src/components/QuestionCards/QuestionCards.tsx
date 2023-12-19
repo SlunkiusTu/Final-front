@@ -4,6 +4,7 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 type QuestionType = {
   // kazkodel meta klaida reikia priminimas paziurek veliau
   questions: Array<any> | null;
+  onDelete?: (question_id: string) => Promise<void>;
 };
 
 const QuestionCards: React.FC<QuestionType> = ({ questions }) => {
