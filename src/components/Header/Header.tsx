@@ -13,10 +13,14 @@ const Header = () => {
           <a href="/ask-question">Ask Question</a>
         </li>
         <li>
-          <a href="">xxx</a>
+          <a href="/login">
+            <button>Login</button>
+          </a>
         </li>
         <li>
-          <a href="">ccc</a>
+          <a href="">
+            <button>Sing Up</button>
+          </a>
         </li>
       </ul>
     </div>

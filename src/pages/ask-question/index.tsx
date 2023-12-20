@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import cookie from "js-cookie";
 import styles from "./styles.module.css";
 
 const AskQuestion = () => {
@@ -17,12 +18,23 @@ const AskQuestion = () => {
       question_text: question_text,
     };
 
-    const response = await axios.post("http://localhost:3001/question", {
-      ...question,
-    });
+    const headers = {
+      authorization: cookie.get("jwt_token"),
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/question",
+        question,
+        {
+          headers,
+        }
+      );
 
-    if (response.status === 200) {
-      router.push("/");
+      if (response.status === 200) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log("error question", error);
     }
   };
 
