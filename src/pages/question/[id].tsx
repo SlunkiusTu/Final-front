@@ -2,11 +2,10 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import AnswerCards from "../../components/AnswerCards/AnswerCards";
 import styles from "./styles.module.css";
 import AnswerQuestionInput from "@/components/AnswerQuestionInput/AnswerQuestionInput";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 type QuestionType = {
   _id: string;
@@ -87,8 +86,7 @@ const Question = () => {
   };
 
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       {question && (
         <div className={styles.wrapper}>
           <h1>{question.question_title}</h1>
@@ -102,8 +100,7 @@ const Question = () => {
       )}
       <AnswerCards answers={answers} onDelete={handleDeleteAnswer} />
       <AnswerQuestionInput />
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 

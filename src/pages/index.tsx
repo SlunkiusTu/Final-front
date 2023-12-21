@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
-import QuestionCards from "@/components/QuestionCards/QuestionCards";
 import { useRouter } from "next/router";
+import QuestionCards from "@/components/QuestionCards/QuestionCards";
 import Forum from "@/components/Forum/Forum";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const Index = () => {
   const [questions, setQuestions] = useState<Array<any> | null>(null);
@@ -42,10 +41,10 @@ const Index = () => {
 
   return (
     <div>
-      <Header />
-      <Forum />
-      <QuestionCards questions={questions} onDelete={handleDeleteQuestion} />
-      <Footer />
+      <PageTemplate>
+        <Forum />
+        <QuestionCards questions={questions} onDelete={handleDeleteQuestion} />
+      </PageTemplate>
     </div>
   );
 };

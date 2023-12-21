@@ -1,14 +1,13 @@
 import React from "react";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import RegistrationForm from "@/components/RegistrationForm/RegistrationForm";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const Registration: React.FC = () => {
   return (
     <div>
-      <Header />
-      <RegistrationForm />
-      <Footer />
+      <PageTemplate>
+        <RegistrationForm />
+      </PageTemplate>
     </div>
   );
 };

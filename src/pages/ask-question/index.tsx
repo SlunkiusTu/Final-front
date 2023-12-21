@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 import cookie from "js-cookie";
 import styles from "./styles.module.css";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const AskQuestion = () => {
   const [question_title, setQuestion_title] = useState("");
@@ -40,8 +39,7 @@ const AskQuestion = () => {
   };
 
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       <div className={styles.wrapper}>
         <h1>Ask Your Question Here: </h1>
         <input
@@ -56,8 +54,7 @@ const AskQuestion = () => {
         />
         <button onClick={onAskQuestion}>Ask Question</button>
       </div>
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 

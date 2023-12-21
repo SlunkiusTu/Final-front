@@ -1,4 +1,5 @@
 .wrapper {
+  background-color: black;
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -10,7 +11,7 @@
 .logo {
   font-size: 2rem;
   text-decoration: none;
-  color: rgb(39, 39, 39);
+  color: white;
 }
 
 .wrapper ul {
@@ -26,5 +27,69 @@
 }
 
 .askQuestion {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
+}
+
+.askQuestion:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.login {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.logout {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.singup {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  color: black;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.singup:hover {
+  background-color: black;
+  border: solid 1px white;
+  color: white;
 }

@@ -43,28 +43,28 @@ const Header = () => {
       </div>
       <ul>
         <li>
-          <Link
-            href="/ask-question"
-            className={styles.askQuestion}
-            onClick={askQuestionClick}
-          >
-            Ask Question
+          <Link href="/ask-question">
+            <button className={styles.askQuestion} onClick={askQuestionClick}>
+              Ask Question
+            </button>
           </Link>
         </li>
 
         <li>
           {isLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
+            <button className={styles.logout} onClick={handleLogout}>
+              Logout
+            </button>
           ) : (
             <Link href="/login">
-              <button>Login</button>
+              <button className={styles.login}>Login</button>
             </Link>
           )}
         </li>
         {!isLoggedIn && (
           <li>
             <Link href="/register">
-              <button>SingUp</button>
+              <button className={styles.singup}>SingUp</button>
             </Link>
           </li>
         )}

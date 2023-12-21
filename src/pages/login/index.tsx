@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
 import { useRouter } from "next/router";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import styles from "./styles.module.css";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const Login = () => {
   const router = useRouter();
@@ -49,9 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <Header />
-
+    <PageTemplate>
       <div className={styles.form}>
         <h1>Login</h1>
         <input
@@ -75,8 +72,7 @@ const Login = () => {
         {passwordError && <p className={styles.error}>{passwordError}</p>}
         <button onClick={onLogin}>Login</button>
       </div>
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 

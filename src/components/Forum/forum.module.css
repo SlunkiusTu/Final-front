@@ -1,10 +1,10 @@
 .wrapper {
-  background: rgb(10, 31, 97);
+  background: rgb(24, 25, 3);
   background: linear-gradient(
     180deg,
-    rgba(10, 31, 97, 1) 19%,
-    rgba(36, 29, 157, 1) 67%,
-    rgba(24, 25, 3, 1) 100%
+    rgba(24, 25, 3, 1) 0%,
+    rgba(10, 31, 97, 1) 47%,
+    rgba(36, 29, 157, 1) 67%
   );
   height: 200px;
   text-align: center;
