@@ -11,21 +11,41 @@ const Login = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
 
   const onLogin = async () => {
-    const body = {
-      email: email,
-      password: password,
-    };
+    try {
+      const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const passwordValidation = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    const response = await axios.post("http://localhost:3001/login", body);
+      if (!emailValidation.test(email)) {
+        setEmailError("Blogai suvedete email duomenis");
+        return;
+      }
 
-    if (response.status === 200) {
-      cookie.set("jwt_token", response.data.token);
-      router.push("/");
+      if (!passwordValidation.test(password)) {
+        setPasswordError("Blogas slaptazodis ");
+        return;
+      }
+
+      const body = {
+        email: email,
+        password: password,
+      };
+
+      const response = await axios.post("http://localhost:3001/login", body);
+
+      if (response.status === 200) {
+        cookie.set("jwt_token", response.data.token);
+        cookie.set("user_id", response.data.userId);
+        router.push("/");
+      }
+
+      console.log("response", response);
+    } catch (error) {
+      console.log(error);
     }
-
-    console.log("response", response);
   };
 
   return (
@@ -37,14 +57,22 @@ const Login = () => {
         <input
           placeholder="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailError(null);
+          }}
         />
+        {emailError && <p className={styles.error}>{emailError}</p>}
         <input
           placeholder="password"
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setPasswordError(null);
+          }}
         />
+        {passwordError && <p className={styles.error}>{passwordError}</p>}
         <button onClick={onLogin}>Login</button>
       </div>
       <Footer />

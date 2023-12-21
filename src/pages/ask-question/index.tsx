@@ -16,6 +16,7 @@ const AskQuestion = () => {
     const question = {
       question_title: question_title,
       question_text: question_text,
+      user_id: cookie.get("user_id"),
     };
 
     const headers = {

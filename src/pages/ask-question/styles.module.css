@@ -10,3 +10,7 @@
 .wrapper h1 {
   text-align: center;
 }
+
+.wrapper input {
+  display: flex;
+}

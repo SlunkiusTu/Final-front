@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import cookie from "js-cookie";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import AnswerCards from "@/components/AnswerCards/AnswerCards";
+import AnswerCards from "../../components/AnswerCards/AnswerCards";
 import styles from "./styles.module.css";
 import AnswerQuestionInput from "@/components/AnswerQuestionInput/AnswerQuestionInput";
 
@@ -12,6 +13,7 @@ type QuestionType = {
   question_title: string;
   question_text: string;
   date: string;
+  user_id: string;
 };
 
 type AnswerType = {
@@ -19,6 +21,7 @@ type AnswerType = {
   answer_title: string;
   answer_text: string;
   date: string;
+  user_id: string;
 };
 
 const Question = () => {
@@ -27,16 +30,26 @@ const Question = () => {
 
   const router = useRouter();
 
+  const userId = cookie.get("user_id");
+
   const fetchQuestion = async (id: string) => {
     try {
       const questionResponse = await axios.get(
         `http://localhost:3001/question/${id}`
       );
+
+      setQuestion(questionResponse.data.question);
+    } catch (error) {
+      console.log("err", error);
+    }
+  };
+
+  const fetchAnswers = async (id: string) => {
+    try {
       const answerResponse = await axios.get(
         `http://localhost:3001/question/${id}/answers`
       );
 
-      setQuestion(questionResponse.data.question);
       setAnswers(answerResponse.data.answers);
     } catch (error) {
       console.log("err", error);
@@ -46,6 +59,7 @@ const Question = () => {
   useEffect(() => {
     console.log("router.query.id:", router.query.id);
     router.query.id && fetchQuestion(router.query.id as string);
+    router.query.id && fetchAnswers(router.query.id as string);
   }, [router.query.id]);
 
   const handleDeleteAnswer = async (answerId: string) => {
@@ -79,9 +93,11 @@ const Question = () => {
         <div className={styles.wrapper}>
           <h1>{question.question_title}</h1>
           <p>{question.question_text}</p>
-          <button onClick={() => handleDeleteQuestion(question?._id)}>
-            deleteQuestion
-          </button>
+          {userId === question.user_id && (
+            <button onClick={() => handleDeleteQuestion(question?._id)}>
+              deleteQuestion
+            </button>
+          )}
         </div>
       )}
       <AnswerCards answers={answers} onDelete={handleDeleteAnswer} />

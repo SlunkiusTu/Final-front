@@ -1,4 +1,29 @@
 .wrapper {
-  border: 1px solid black;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px black solid;
+  border-radius: 4px;
+  margin: 1rem 3rem 1rem 3rem;
+  box-shadow: 3px 4px 16px -3px rgba(0, 0, 0, 0.75);
+  transition: 0.1s;
+}
+
+.wrapper:hover {
+  scale: 1.03;
+}
+
+.wrapper h1 {
+  margin-left: 2rem;
+}
+
+.wrapper p {
+  margin-left: 3rem;
+}
+.date {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(39, 39, 39);
 }

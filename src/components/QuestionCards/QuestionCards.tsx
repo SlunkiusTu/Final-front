@@ -1,5 +1,6 @@
 import React from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
+import styles from "./questionCards.module.css";
 
 type QuestionType = {
   // kazkodel meta klaida reikia priminimas paziurek veliau
@@ -9,7 +10,7 @@ type QuestionType = {
 
 const QuestionCards: React.FC<QuestionType> = ({ questions }) => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       {questions &&
         questions.map((question) => (
           <div key={question._id}>

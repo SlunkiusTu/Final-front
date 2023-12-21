@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import cookie from "js-cookie";
 import styles from "./answerQuestionInput.module.css";
 
 const AnswerQuestionInput = () => {
@@ -15,6 +16,7 @@ const AnswerQuestionInput = () => {
       const answer = {
         answer_title: answer_title,
         answer_text: answer_text,
+        user_id: cookie.get("user_id"),
       };
 
       const response = await axios.post(
