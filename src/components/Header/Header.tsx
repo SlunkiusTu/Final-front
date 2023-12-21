@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
 import styles from "./header.module.css";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!cookie.get("jwt_token"));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    const savedCookie = cookie.get("jwt_token");
+
+    if (savedCookie) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const askQuestionClick = () => {
     const jwtToken = cookie.get("jwt_token");
@@ -21,6 +29,7 @@ const Header = () => {
 
   const handleLogout = () => {
     cookie.remove("jwt_token");
+    cookie.remove("user_id");
     setIsLoggedIn(false);
     router.push("/");
   };
@@ -34,10 +43,15 @@ const Header = () => {
       </div>
       <ul>
         <li>
-          <a className={styles.askQuestion} onClick={askQuestionClick}>
+          <Link
+            href="/ask-question"
+            className={styles.askQuestion}
+            onClick={askQuestionClick}
+          >
             Ask Question
-          </a>
+          </Link>
         </li>
+
         <li>
           {isLoggedIn ? (
             <button onClick={handleLogout}>Logout</button>
@@ -47,11 +61,13 @@ const Header = () => {
             </Link>
           )}
         </li>
-        <li>
-          <a href="">
-            <button>SingUp</button>
-          </a>
-        </li>
+        {!isLoggedIn && (
+          <li>
+            <Link href="/register">
+              <button>SingUp</button>
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );
