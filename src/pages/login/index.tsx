@@ -49,28 +49,32 @@ const Login = () => {
 
   return (
     <PageTemplate>
-      <div className={styles.form}>
-        <h1>Login</h1>
-        <input
-          placeholder="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setEmailError(null);
-          }}
-        />
-        {emailError && <p className={styles.error}>{emailError}</p>}
-        <input
-          placeholder="password"
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setPasswordError(null);
-          }}
-        />
-        {passwordError && <p className={styles.error}>{passwordError}</p>}
-        <button onClick={onLogin}>Login</button>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <h1>Login</h1>
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailError(null);
+            }}
+          />
+          {emailError && <p className={styles.error}>{emailError}</p>}
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setPasswordError(null);
+            }}
+          />
+          {passwordError && <p className={styles.error}>{passwordError}</p>}
+          <button className={styles.button} onClick={onLogin}>
+            Login
+          </button>
+        </div>
       </div>
     </PageTemplate>
   );

@@ -33,7 +33,7 @@ const RegistrationForm: React.FC = () => {
 
       if (!passwordValidation.test(password)) {
         setPasswordError(
-          "Slaptazodis turi tureti bent viena didziaja raide, skaiciu, ir ne trumpesnis nei 8 simbolai"
+          "Slaptazodis turi tureti viena didziaja raide, skaiciu, ir buti trumpesnis nei 8 simbolai"
         );
         return;
       }
@@ -53,38 +53,42 @@ const RegistrationForm: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1>Registration</h1>
+      <div className={styles.container}>
+        <h1>Registration</h1>
 
-      <input
-        placeholder="Your Name"
-        value={fullName}
-        onChange={(e) => {
-          setFullName(e.target.value);
-          setFullNameError(null);
-        }}
-      />
-      {fullNameError && <p className={styles.error}>{fullNameError}</p>}
-      <input
-        placeholder="Email"
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          setEmailError(null);
-        }}
-      />
-      {emailError && <p className={styles.error}>{emailError}</p>}
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-          setPasswordError(null);
-        }}
-      />
-      {passwordError && <p className={styles.error}>{passwordError}</p>}
-      <button onClick={handleRegistration}>Register</button>
+        <input
+          placeholder="Your Name"
+          value={fullName}
+          onChange={(e) => {
+            setFullName(e.target.value);
+            setFullNameError(null);
+          }}
+        />
+        {fullNameError && <p className={styles.error}>{fullNameError}</p>}
+        <input
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailError(null);
+          }}
+        />
+        {emailError && <p className={styles.error}>{emailError}</p>}
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setPasswordError(null);
+          }}
+        />
+        {passwordError && <p className={styles.error}>{passwordError}</p>}
+        <button className={styles.button} onClick={handleRegistration}>
+          Register
+        </button>
+      </div>
     </div>
   );
 };

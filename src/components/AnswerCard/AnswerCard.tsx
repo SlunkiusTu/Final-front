@@ -27,13 +27,17 @@ const AnswerCard: React.FC<AnswerComponentType> = ({ answer, onDelete }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1>{answer.answer_title}</h1>
-      <p>{answer.answer_text}</p>
-      <div>{justDate}</div>
-      <div>{answer.gained_likes_number}</div>
-      {userId === answer.user_id && (
-        <button onClick={handleDelete}>Delete</button>
-      )}
+      <div className={styles.container}>
+        <h1>{answer.answer_title}</h1>
+        <p>{answer.answer_text}</p>
+        <div className={styles.date}>{justDate}</div>
+        <div>{answer.gained_likes_number}</div>
+        {userId === answer.user_id && (
+          <button className={styles.button} onClick={handleDelete}>
+            Delete
+          </button>
+        )}
+      </div>
     </div>
   );
 };

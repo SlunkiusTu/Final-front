@@ -41,18 +41,22 @@ const AskQuestion = () => {
   return (
     <PageTemplate>
       <div className={styles.wrapper}>
-        <h1>Ask Your Question Here: </h1>
-        <input
-          value={question_title}
-          onChange={(e) => setQuestion_title(e.target.value)}
-          placeholder="Klausimo tytle"
-        />
-        <input
-          value={question_text}
-          onChange={(e) => setQuestion_text(e.target.value)}
-          placeholder="Problema su kuria susiduri"
-        />
-        <button onClick={onAskQuestion}>Ask Question</button>
+        <div className={styles.container}>
+          <h1>Ask Your Question</h1>
+          <input
+            value={question_title}
+            onChange={(e) => setQuestion_title(e.target.value)}
+            placeholder="Klausimo tytle"
+          />
+          <input
+            value={question_text}
+            onChange={(e) => setQuestion_text(e.target.value)}
+            placeholder="Problema su kuria susiduri"
+          />
+          <button className={styles.button} onClick={onAskQuestion}>
+            Ask Question
+          </button>
+        </div>
       </div>
     </PageTemplate>
   );

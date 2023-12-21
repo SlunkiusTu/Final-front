@@ -13,6 +13,10 @@ const AnswerQuestionInput = () => {
 
   const onAnswerQuestion = async () => {
     try {
+      const headers = {
+        authorization: cookie.get("jwt_token"),
+      };
+
       const answer = {
         answer_title: answer_title,
         answer_text: answer_text,
@@ -23,7 +27,8 @@ const AnswerQuestionInput = () => {
         `http://localhost:3001/question/${questionId}/answers`,
         {
           ...answer,
-        }
+        },
+        { headers }
       );
 
       if (response.status === 200) {
@@ -36,17 +41,22 @@ const AnswerQuestionInput = () => {
 
   return (
     <div className={styles.wrapper}>
-      <input
-        value={answer_title}
-        onChange={(e) => setAnswer_title(e.target.value)}
-        placeholder="Answer Title"
-      />
-      <input
-        value={answer_text}
-        onChange={(e) => setAnswer_text(e.target.value)}
-        placeholder="More info to question"
-      />
-      <button onClick={onAnswerQuestion}>Add Answer</button>
+      <div className={styles.container}>
+        <h1>Answer to Question</h1>
+        <input
+          value={answer_title}
+          onChange={(e) => setAnswer_title(e.target.value)}
+          placeholder="Answer Title"
+        />
+        <input
+          value={answer_text}
+          onChange={(e) => setAnswer_text(e.target.value)}
+          placeholder="More info to question"
+        />
+        <button className={styles.button} onClick={onAnswerQuestion}>
+          Add Answer
+        </button>
+      </div>
     </div>
   );
 };

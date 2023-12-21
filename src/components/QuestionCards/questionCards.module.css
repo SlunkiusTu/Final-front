@@ -1,4 +1,31 @@
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #302e2e;
+}
+
+.buttonWrapper {
+  display: flex;
+
+  justify-content: center;
+}
+
+.button {
+  border: solid 1px white;
+  background-color: black;
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  margin-right: 1rem;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: white;
+  color: #1a1919;
+  font-size: 1rem;
 }

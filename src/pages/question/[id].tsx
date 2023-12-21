@@ -26,10 +26,9 @@ type AnswerType = {
 const Question = () => {
   const [question, setQuestion] = useState<QuestionType | null>(null);
   const [answers, setAnswers] = useState<AnswerType[] | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
 
   const router = useRouter();
-
-  const userId = cookie.get("user_id");
 
   const fetchQuestion = async (id: string) => {
     try {
@@ -56,14 +55,25 @@ const Question = () => {
   };
 
   useEffect(() => {
-    console.log("router.query.id:", router.query.id);
+    const savedUserId = cookie.get("user_id");
+
+    if (savedUserId) {
+      setUserId(savedUserId);
+    }
+    // setUserId(cookie.get("user_id"));
     router.query.id && fetchQuestion(router.query.id as string);
     router.query.id && fetchAnswers(router.query.id as string);
   }, [router.query.id]);
 
   const handleDeleteAnswer = async (answerId: string) => {
     try {
-      await axios.delete(`http://localhost:3001/answer/${answerId}`);
+      const headers = {
+        authorization: cookie.get("jwt_token"),
+      };
+
+      await axios.delete(`http://localhost:3001/answer/${answerId}`, {
+        headers,
+      });
 
       setAnswers((prevAnswers) =>
         prevAnswers
@@ -77,7 +87,13 @@ const Question = () => {
 
   const handleDeleteQuestion = async (question_id: string) => {
     try {
-      await axios.delete(`http://localhost:3001/question/${question_id}`);
+      const headers = {
+        authorization: cookie.get("jwt_token"),
+      };
+
+      await axios.delete(`http://localhost:3001/question/${question_id}`, {
+        headers,
+      });
 
       router.push("/");
     } catch (error) {
@@ -87,17 +103,22 @@ const Question = () => {
 
   return (
     <PageTemplate>
-      {question && (
-        <div className={styles.wrapper}>
-          <h1>{question.question_title}</h1>
-          <p>{question.question_text}</p>
-          {userId === question.user_id && (
-            <button onClick={() => handleDeleteQuestion(question?._id)}>
-              deleteQuestion
-            </button>
-          )}
-        </div>
-      )}
+      <div className={styles.wrapper}>
+        {question && (
+          <div className={styles.container}>
+            <h1>{question.question_title}</h1>
+            <p>{question.question_text}</p>
+            {userId === question.user_id && (
+              <button
+                className={styles.button}
+                onClick={() => handleDeleteQuestion(question?._id)}
+              >
+                Delete Your Question
+              </button>
+            )}
+          </div>
+        )}
+      </div>
       <AnswerCards answers={answers} onDelete={handleDeleteAnswer} />
       <AnswerQuestionInput />
     </PageTemplate>
