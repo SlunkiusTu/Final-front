@@ -1,0 +1,104 @@
+.wrapper {
+  background-color: black;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.logo {
+  font-size: 2rem;
+  text-decoration: none;
+  color: white;
+}
+
+.wrapper ul {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.wrapper ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.askQuestion {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.askQuestion:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.login {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.logout {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.singup {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  color: black;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.singup:hover {
+  background-color: black;
+  border: solid 1px white;
+  color: white;
+}
+
+@media only screen and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+}

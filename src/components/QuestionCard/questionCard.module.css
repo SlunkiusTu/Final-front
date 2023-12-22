@@ -28,3 +28,8 @@
   text-decoration: none;
   color: rgb(39, 39, 39);
 }
+
+.answer {
+  text-align: right;
+  margin-right: 2rem;
+}

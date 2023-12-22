@@ -3,7 +3,6 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import styles from "./questionCards.module.css";
 
 type QuestionType = {
-  // kazkodel meta klaida reikia priminimas paziurek veliau
   questions: Array<any> | null;
   onDelete?: (question_id: string) => Promise<void>;
 };

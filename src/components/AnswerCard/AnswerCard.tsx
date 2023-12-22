@@ -31,7 +31,6 @@ const AnswerCard: React.FC<AnswerComponentType> = ({ answer, onDelete }) => {
         <h1>{answer.answer_title}</h1>
         <p>{answer.answer_text}</p>
         <div className={styles.date}>{justDate}</div>
-        <div>{answer.gained_likes_number}</div>
         {userId === answer.user_id && (
           <button className={styles.button} onClick={handleDelete}>
             Delete

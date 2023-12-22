@@ -1,75 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import cookie from "js-cookie";
 import styles from "./header.module.css";
+import DesktopNavbar from "../DesktopNavbar/DesktopNavbar";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    const savedCookie = cookie.get("jwt_token");
-
-    if (savedCookie) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  const askQuestionClick = () => {
-    const jwtToken = cookie.get("jwt_token");
-
-    if (!jwtToken) {
-      router.push("/login");
-    } else {
-      router.push("/ask-question");
-    }
-  };
-
-  const handleLogout = () => {
-    cookie.remove("jwt_token");
-    cookie.remove("user_id");
-    setIsLoggedIn(false);
-    router.push("/");
-  };
-
+  const [isShowMobileNavbar, setIsShowMobileNavbar] = useState(false);
   return (
-    <div className={styles.wrapper}>
+    <header className={styles.wrapper}>
       <div>
         <Link className={styles.logo} href="/">
           Forum-App
         </Link>
       </div>
-      <ul>
-        <li>
-          <Link href="/ask-question">
-            <button className={styles.askQuestion} onClick={askQuestionClick}>
-              Ask Question
-            </button>
-          </Link>
-        </li>
-
-        <li>
-          {isLoggedIn ? (
-            <button className={styles.logout} onClick={handleLogout}>
-              Logout
-            </button>
-          ) : (
-            <Link href="/login">
-              <button className={styles.login}>Login</button>
-            </Link>
-          )}
-        </li>
-        {!isLoggedIn && (
-          <li>
-            <Link href="/register">
-              <button className={styles.singup}>SingUp</button>
-            </Link>
-          </li>
-        )}
-      </ul>
-    </div>
+      <DesktopNavbar />
+      <button
+        className={styles.burgerButton}
+        onClick={() => {
+          setIsShowMobileNavbar((prevState) => !prevState);
+        }}
+      >
+        <svg viewBox="0 0 100 80" width="20" height="20">
+          <rect width="100" height="10"></rect>
+          <rect y="30" width="100" height="10"></rect>
+          <rect y="60" width="100" height="10"></rect>
+        </svg>
+      </button>
+      <MobileNavbar isActive={isShowMobileNavbar} />
+    </header>
   );
 };
 

@@ -1,0 +1,104 @@
+.mobileNav {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobileNav {
+    display: inline-block;
+    position: absolute;
+    background-color: #302e2e;
+    top: 100px;
+    right: -100%;
+    height: 100%;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  .active {
+    right: 0;
+  }
+
+  .mobileNav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+    padding: 0;
+    margin-top: 4rem;
+  }
+
+  .mobileNav ul li a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.askQuestion {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.askQuestion:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.login {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.logout {
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+
+.singup {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  color: black;
+  padding: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.singup:hover {
+  background-color: black;
+  border: solid 1px white;
+  color: white;
+}

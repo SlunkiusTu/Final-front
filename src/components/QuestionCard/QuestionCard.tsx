@@ -23,7 +23,7 @@ const QuestionCard: React.FC<QuestionComponentType> = ({ question }) => {
       <div className={styles.wrapper}>
         <h1>{question.question_title}</h1>
         <p>{question.question_text}</p>
-        <div>Answers: {question.answersCount}</div>
+        <div className={styles.answer}>Answers: {question.answersCount}</div>
         <div className={styles.date}>{justDate}</div>
       </div>
     </Link>

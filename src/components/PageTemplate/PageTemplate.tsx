@@ -12,7 +12,6 @@ const PageTemplate: React.FC<PageTemplateType> = ({ children }) => {
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.main}>{children}</div>
-
       <Footer />
     </div>
   );

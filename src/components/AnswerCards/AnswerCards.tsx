@@ -3,7 +3,6 @@ import AnswerCard from "../AnswerCard/AnswerCard";
 import styles from "./answerCards.module.css";
 
 type AnswerType = {
-  // kazkodel meta klaida reikia priminimas paziurek veliau
   answers: Array<any> | null;
   onDelete: (answerId: string) => void;
 };

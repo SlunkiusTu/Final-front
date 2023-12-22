@@ -1,6 +1,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
   background-color: #302e2e;
 }
 
@@ -26,4 +27,13 @@
   background-color: white;
   color: #1a1919;
   font-size: 1rem;
+}
+
+@media only screen and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
 }
