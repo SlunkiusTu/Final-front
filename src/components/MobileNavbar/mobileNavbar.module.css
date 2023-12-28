@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 804px) {
   .mobileNav {
     display: inline-block;
     position: absolute;

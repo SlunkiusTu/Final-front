@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-columns: 1fr;
+  height: 100%;
   background-color: #302e2e;
 }
 
@@ -32,7 +32,7 @@
 @media only screen and (max-width: 992px) {
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 804px) {
   .wrapper {
     grid-template-columns: 1fr;
   }
