@@ -60,7 +60,6 @@ const Question = () => {
     if (savedUserId) {
       setUserId(savedUserId);
     }
-    // setUserId(cookie.get("user_id"));
     router.query.id && fetchQuestion(router.query.id as string);
     router.query.id && fetchAnswers(router.query.id as string);
   }, [router.query.id]);
